@@ -8,11 +8,18 @@ connectDB();
 
 const app = express();
 
-app.use(cors({
-  origin:
-    "https://shortify-ai-xi.vercel.app/",
-  credentials: true,
-}));
+app.use(
+
+  cors({
+
+    origin:
+      "https://shortify-ai-xi.vercel.app/",
+
+    credentials: true,
+
+  })
+
+);
 app.use(express.json());
 
 // Routes
