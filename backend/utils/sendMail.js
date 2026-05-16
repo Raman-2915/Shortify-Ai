@@ -1,8 +1,27 @@
-const { Resend } = require("resend");
+const nodemailer =
+  require("nodemailer");
 
-const resend = new Resend(
-  process.env.RESEND_API_KEY
-);
+const transporter =
+  nodemailer.createTransport({
+
+    host:
+      "smtp-relay.brevo.com",
+
+    port: 587,
+
+    secure: false,
+
+    auth: {
+
+      user:
+        process.env.BREVO_USER,
+
+      pass:
+        process.env.BREVO_PASS,
+
+    },
+
+  });
 
 const sendMail = async (
   to,
@@ -12,21 +31,23 @@ const sendMail = async (
 
   try {
 
-    await resend.emails.send({
+    const info =
+      await transporter.sendMail({
 
-      from:
-        "onboarding@resend.dev",
+        from:
+          process.env.BREVO_SENDER,
 
-      to,
+        to,
 
-      subject,
+        subject,
 
-      html,
+        html,
 
-    });
+      });
 
     console.log(
-      "Email sent successfully"
+      "Email sent:",
+      info.response
     );
 
     return true;
@@ -34,7 +55,7 @@ const sendMail = async (
   } catch (err) {
 
     console.log(
-      "RESEND ERROR:",
+      "MAIL ERROR:",
       err
     );
 
