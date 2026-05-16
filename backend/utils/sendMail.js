@@ -1,22 +1,8 @@
-const nodemailer =
-  require("nodemailer");
+const { Resend } = require("resend");
 
-const transporter =
-  nodemailer.createTransport({
-
-    service: "gmail",
-
-    auth: {
-
-      user:
-        process.env.EMAIL_USER,
-
-      pass:
-        process.env.EMAIL_PASS,
-
-    },
-
-  });
+const resend = new Resend(
+  process.env.RESEND_API_KEY
+);
 
 const sendMail = async (
   to,
@@ -26,30 +12,21 @@ const sendMail = async (
 
   try {
 
-    // VERIFY SMTP
-    await transporter.verify();
+    await resend.emails.send({
+
+      from:
+        "onboarding@resend.dev",
+
+      to,
+
+      subject,
+
+      html,
+
+    });
 
     console.log(
-      "SMTP Connected Successfully"
-    );
-
-    const info =
-      await transporter.sendMail({
-
-        from:
-          process.env.EMAIL_USER,
-
-        to,
-
-        subject,
-
-        html,
-
-      });
-
-    console.log(
-      "Email sent:",
-      info.response
+      "Email sent successfully"
     );
 
     return true;
@@ -57,7 +34,7 @@ const sendMail = async (
   } catch (err) {
 
     console.log(
-      "FULL MAIL ERROR:",
+      "RESEND ERROR:",
       err
     );
 
