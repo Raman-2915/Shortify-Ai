@@ -26,6 +26,13 @@ const sendMail = async (
 
   try {
 
+    // VERIFY SMTP
+    await transporter.verify();
+
+    console.log(
+      "SMTP Connected Successfully"
+    );
+
     const info =
       await transporter.sendMail({
 
@@ -50,7 +57,7 @@ const sendMail = async (
   } catch (err) {
 
     console.log(
-      "MAIL ERROR:",
+      "FULL MAIL ERROR:",
       err
     );
 
