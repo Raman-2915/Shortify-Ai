@@ -1,27 +1,4 @@
-const nodemailer =
-  require("nodemailer");
-
-const transporter =
-  nodemailer.createTransport({
-
-    host:
-      "smtp-relay.brevo.com",
-
-    port: 587,
-
-    secure: false,
-
-    auth: {
-
-      user:
-        process.env.BREVO_USER,
-
-      pass:
-        process.env.BREVO_PASS,
-
-    },
-
-  });
+const axios = require("axios");
 
 const sendMail = async (
   to,
@@ -31,23 +8,53 @@ const sendMail = async (
 
   try {
 
-    const info =
-      await transporter.sendMail({
+    await axios.post(
 
-        from:
-          process.env.BREVO_SENDER,
+      "https://api.brevo.com/v3/smtp/email",
 
-        to,
+      {
+
+        sender: {
+
+          name: "Shortify AI",
+
+          email:
+            process.env.BREVO_SENDER,
+
+        },
+
+        to: [
+
+          {
+            email: to,
+          },
+
+        ],
 
         subject,
 
-        html,
+        htmlContent: html,
 
-      });
+      },
+
+      {
+
+        headers: {
+
+          "api-key":
+            process.env.BREVO_API_KEY,
+
+          "Content-Type":
+            "application/json",
+
+        },
+
+      }
+
+    );
 
     console.log(
-      "Email sent:",
-      info.response
+      "Email sent successfully"
     );
 
     return true;
@@ -55,8 +62,8 @@ const sendMail = async (
   } catch (err) {
 
     console.log(
-      "MAIL ERROR:",
-      err
+      "BREVO API ERROR:",
+      err.response?.data || err
     );
 
     return false;
