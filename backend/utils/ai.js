@@ -256,7 +256,6 @@ Your PRIMARY goal:
 
 SECONDARY goals:
 - categorize URLs
-- organize links
 - improve productivity
 
 Rules:

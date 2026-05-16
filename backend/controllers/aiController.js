@@ -31,7 +31,6 @@ exports.chatAI = async (
       - shortnames
       - categorization
       - productivity
-      - URLs
       - organization
 
     `;
