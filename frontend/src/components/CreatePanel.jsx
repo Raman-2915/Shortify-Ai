@@ -97,6 +97,10 @@ const CreatePanel = ({
     ];
 
     setSuggestions(imgs);
+    setForm((prev) => ({
+  ...prev,
+  selectedImage: imgs[0],
+}));
 
   } catch {
 
@@ -266,7 +270,7 @@ const CreatePanel = ({
           src={img}
           onError={(e) => {
             e.target.src =
-             "https://picsum.photos/400/200";
+             "https://placehold.co/400x200/0f172a/ffffff?text=Shortify";
           }}
 
           onClick={() =>
@@ -316,12 +320,18 @@ const CreatePanel = ({
 
         className="
           w-full
-          bg-blue-600
-          hover:bg-blue-700
-          transition
-          p-3
-          rounded-xl
+          bg-gradient-to-r
+          from-blue-600
+          to-blue-500
+          hover:scale-[1.02]
+          active:scale-[0.98]
+          transition-all
+          p-4
+          rounded-2xl
           mt-5
+          font-semibold
+          shadow-lg
+          shadow-blue-500/20
         "
       >
 

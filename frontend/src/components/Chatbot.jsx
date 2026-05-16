@@ -17,7 +17,12 @@ const Chatbot = ({
       {
         sender: "ai",
         text:
-          "Welcome to Shortify AI",
+          `Welcome to Shortify AI
+
+• Ask for shortname ideas
+• Get branding suggestions
+• Learn how to use the platform
+• Ask general questions`,
       },
     ]);
 
@@ -155,7 +160,7 @@ const Chatbot = ({
           (msg, index) => (
 
             <div
-              key={index}
+              key={`${msg.sender}-${index}`}
               className={`
                 max-w-[90%]
                 p-3
@@ -169,9 +174,14 @@ const Chatbot = ({
                   msg.sender ===
                   "user"
 
-                  ? "bg-blue-600 ml-auto text-white"
+                  ? `bg-blue-600 ml-auto text-white shadow-lg shadow-blue-500/20`
 
-                  : "bg-slate-800 text-white"
+                  : `bg-gradient-to-br
+                     from-slate-800
+                     to-slate-900
+                     text-white
+                     border
+                     border-slate-700`
                 }
               `}
             >
@@ -179,7 +189,6 @@ const Chatbot = ({
               <div className="whitespace-pre-line leading-7 text-[14px] font-medium">
   {msg.text}
 </div>
-             { msg.image} 
 
             </div>
           )
@@ -190,13 +199,16 @@ const Chatbot = ({
 
           <div className="
             bg-slate-800
+            border
+            border-slate-700
             p-3
             rounded-2xl
             text-white
             w-fit
+            animate-pulse
           ">
 
-            Thinking...
+            Shortify AI is thinking...
 
           </div>
 
@@ -230,7 +242,7 @@ const Chatbot = ({
           }
 
           placeholder="
-            Ask AI...
+            Ask AI about shortnames...
           "
 
           className="

@@ -41,7 +41,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchUrls();
-  }, []);
+  }, [username]);
 
   return (
     <div className="h-screen text-[14px] overflow-hidden bg-slate-950 text-white ">
@@ -51,7 +51,7 @@ const Dashboard = () => {
       <div className="flex flex-col lg:flex-row h-[calc(100vh-64px)]">
 
         {/* LEFT */}
-        <div className="flex w-[80%]">
+        <div className="flex flex-1 min-w-0">
 
           {/* CREATE PANEL */}
           {/* DESKTOP CREATE PANEL */}
@@ -108,7 +108,7 @@ const Dashboard = () => {
             placeholder="Search URLs..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-slate-900 p-4 rounded-2xl mb-6 outline-none border border-slate-700"
+            className="w-full bg-slate-900/80 backdrop-blur-xl p-4 rounded-2xl mb-6 outline-none border border-slate-800 focus:border-blue-500 transition"
           />
           {/* ADD CARD */}
           <motion.div
@@ -322,7 +322,7 @@ const Dashboard = () => {
 </div>
 
             {/* GRID */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
 
               {urls
                 .filter((url) =>
@@ -348,8 +348,9 @@ const Dashboard = () => {
         {/* CHATBOT */}
         <div className="hidden
   xl:block
-  w-[22%]
-  min-w-[320px]
+  w-[20%]
+  min-w-[300px]
+  max-w-[340px]
   border-l
   border-slate-800
   bg-slate-950/60
@@ -393,7 +394,7 @@ const Dashboard = () => {
 
     text-2xl
 
-    animate-pulse
+    hover:shadow-cyan-500/50
 
     hover:scale-110
     transition-all
