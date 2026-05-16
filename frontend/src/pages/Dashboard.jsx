@@ -54,15 +54,46 @@ const Dashboard = () => {
         <div className="flex w-[80%]">
 
           {/* CREATE PANEL */}
-          {showCreate && (
-            <div className="w-[25%]">
-              <CreatePanel
-                fetchUrls={fetchUrls}
-                setShowCreate={setShowCreate}
-                suggestedImage={suggestedImage}
-              />
-            </div>
-          )}
+          {/* DESKTOP CREATE PANEL */}
+{showCreate && (
+
+  <>
+
+    {/* MOBILE FULLSCREEN */}
+    <div className="
+      fixed
+      inset-0
+      z-50
+      bg-slate-950
+      md:hidden
+    ">
+
+      <CreatePanel
+        fetchUrls={fetchUrls}
+        setShowCreate={setShowCreate}
+        suggestedImage={suggestedImage}
+      />
+
+    </div>
+
+    {/* DESKTOP SIDEBAR */}
+    <div className="
+      hidden
+      md:block
+      w-[25%]
+    ">
+
+      <CreatePanel
+        fetchUrls={fetchUrls}
+        setShowCreate={setShowCreate}
+        suggestedImage={suggestedImage}
+      />
+
+    </div>
+
+  </>
+
+)}
 
   
 
@@ -335,21 +366,42 @@ const Dashboard = () => {
 <div className="lg:hidden fixed bottom-4 right-4 z-50">
 
   <button
-    onClick={() =>
-      setShowMobileChat(
-        !showMobileChat
-      )
-    }
-    className="
-      bg-blue-600
-      text-white
-      p-4
-      rounded-full
-      shadow-lg
-    "
-  >
-    AI
-  </button>
+  onClick={() =>
+    setShowMobileChat(true)
+  }
+  className="
+    fixed
+    bottom-5
+    right-5
+    z-50
+
+    h-16
+    w-16
+
+    rounded-full
+
+    bg-gradient-to-r
+    from-blue-500
+    to-cyan-500
+
+    shadow-2xl
+    shadow-blue-500/40
+
+    flex
+    items-center
+    justify-center
+
+    text-2xl
+
+    animate-pulse
+
+    hover:scale-110
+    transition-all
+    duration-300
+  "
+>
+  🤖
+</button>
 
 </div>
 

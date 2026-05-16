@@ -162,21 +162,48 @@ const CreatePanel = ({
   return (
 
     <div className="
-      w-full
-      h-full
-      bg-slate-950
-      border-r
-      border-slate-700
-      p-5
-    ">
+  w-full
+  h-full
+  bg-slate-950
 
-      <h2 className="
-        text-2xl
-        font-bold
-        mb-6
-      ">
-        Create URL
-      </h2>
+  md:border-r
+  border-slate-700
+
+  p-4
+  md:p-5
+
+  overflow-y-auto
+">
+
+      <div className="
+  flex
+  items-center
+  justify-between
+  mb-6
+">
+
+  <h2 className="
+    text-2xl
+    font-bold
+  ">
+    Create URL
+  </h2>
+
+  <button
+    onClick={() =>
+      setShowCreate(false)
+    }
+    className="
+      text-3xl
+      text-slate-400
+      hover:text-white
+      transition
+    "
+  >
+    ✕
+  </button>
+
+</div>
 
       {/* URL INPUT */}
       <input
