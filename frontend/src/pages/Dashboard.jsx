@@ -14,6 +14,9 @@ const Dashboard = () => {
   const [showCreate, setShowCreate] = useState(false);
   const [search, setSearch] = useState("");
   const [suggestedImage, setSuggestedImage] =useState("");
+  const [showMobileChat,
+  setShowMobileChat] =
+  useState(false);
 
   const [urls, setUrls] = useState([]);
   const [editingUrl, setEditingUrl] = useState(null);
@@ -164,7 +167,6 @@ const Dashboard = () => {
         text-7xl
         mb-4
       ">
-        🚀
       </div>
 
       <h2 className="
@@ -328,6 +330,77 @@ const Dashboard = () => {
             }
           />
         </div>
+
+        {/* MOBILE CHATBOT */}
+<div className="lg:hidden fixed bottom-4 right-4 z-50">
+
+  <button
+    onClick={() =>
+      setShowMobileChat(
+        !showMobileChat
+      )
+    }
+    className="
+      bg-blue-600
+      text-white
+      p-4
+      rounded-full
+      shadow-lg
+    "
+  >
+    AI
+  </button>
+
+</div>
+
+{
+  showMobileChat && (
+
+    <div className="
+      fixed
+      inset-0
+      bg-slate-950
+      z-50
+    ">
+
+      <div className="
+        flex
+        justify-between
+        items-center
+        p-4
+        border-b
+        border-slate-700
+      ">
+
+        <h2 className="text-xl font-bold">
+          AI Assistant
+        </h2>
+
+        <button
+          onClick={() =>
+            setShowMobileChat(false)
+          }
+          className="
+            text-red-500
+            text-xl
+          "
+        >
+          ✕
+        </button>
+
+      </div>
+
+      <div className="h-[calc(100%-70px)]">
+        <Chatbot urls={urls}
+         setSuggestedImage={
+              setSuggestedImage
+            }
+        />
+      </div>
+
+    </div>
+  )
+}
 
       </div>
       {editingUrl && (

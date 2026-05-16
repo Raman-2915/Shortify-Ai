@@ -17,7 +17,7 @@ const Chatbot = ({
       {
         sender: "ai",
         text:
-          "👋 Welcome to Shortify AI",
+          "Welcome to Shortify AI",
       },
     ]);
 

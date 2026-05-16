@@ -30,11 +30,9 @@ const UrlCard = ({
 
 }) => {
 
-  const [showQR, setShowQR] =
-    useState(false);
 
   const shortLink =
-    `http://localhost:5000/${url.shortId}`;
+    `${import.meta.env.VITE_API_URL}/${url.shortId}`;
 
   // COPY LINK
   const copyLink = () => {
