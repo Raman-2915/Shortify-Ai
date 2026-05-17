@@ -13,7 +13,7 @@ app.use(
   cors({
 
     origin:
-      "https://shortify-iv3prabbi-ramandeep-singh-s-projects.vercel.app",
+      "https://shortify-ai-xi.vercel.app",
 
     credentials: true,
 
