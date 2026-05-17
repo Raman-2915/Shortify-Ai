@@ -44,11 +44,11 @@ const Dashboard = () => {
   }, [username]);
 
   return (
-    <div className="min-h-screen text-[14px]  bg-slate-950 text-white overflow-x-hidden ">
+    <div className="md:h-screen min-h-screen text-[14px] md:overflow-hidden overflow-x-hidden bg-slate-950 text-white  ">
 
       <Navbar setShowCreate={setShowCreate} />
 
-      <div className="flex flex-col lg:flex-row min-h-[calc(100vh-64px)]">
+      <div className="flex flex-col lg:flex-row md:h-[calc(100vh-64px)] min-h-[calc(100vh-64px)]">
 
         {/* LEFT */}
         <div className="flex flex-1 min-w-0">
@@ -100,8 +100,8 @@ const Dashboard = () => {
           {/* GRID */}
           <div
             className={`${
-              showCreate ? "w-full md:w-[75%]" : "w-full"
-            } overflow-y-auto p-4 min-w-0`}
+              showCreate ? "w-[75%]" : "w-full"
+            } overflow-y-auto p-4 `}
           >
                     <input
             type="text"
